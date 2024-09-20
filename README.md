@@ -1,5 +1,30 @@
 # Ground Truth for Grammatical Error Correction Metrics
 
+# API-based GLEU
+
+This repository enables to use GLEU via API.
+
+After `git clone git@github.com:gotutiyan/gleu.git`, you can use it by:
+```python
+from gleu import calc_gleu
+
+srcs = ['This sentences contains grammatical error .']
+refs = [
+  ['These sentences contain a grammatical error .'],
+  ['This sentence contains grammatical errors .']
+]  # Shape: (num references, num_sents)
+hyps = ['These sentences contain a grammatical error .']
+score = calc_gleu(
+    sources=srcs,
+    hypothesis=hyps,
+    references=refs,
+    n=4,
+    iter=500
+)
+print(score)
+```
+
+=== Below is the official description ===
 
 This repository contains a python implementation of the GLEU metric
 (**G**eneral **L**anguage **E**valuation **U**nderstanding), which
